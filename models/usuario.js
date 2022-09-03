@@ -20,8 +20,7 @@ const UsuarioSchema = Schema({
     },
     rol: {
         type: String,
-        required: true,
-        enum: ['ADMIN_ROL', 'USER_ROL']
+        required: true
     },
     estado: {
         type: Boolean,
@@ -34,6 +33,11 @@ const UsuarioSchema = Schema({
 
 });
 
+// En esta funcion se sobre escribe la funcion .toJSON eliminando asi el 'passwors' y '__v' del Schema del usuario
+UsuarioSchema.methods.toJSON = function(){
+    const { __v, password, ...usuario } = this.toObject();
+    return usuario;
+}
 
 
 module.exports = model( 'Usuario', UsuarioSchema );
