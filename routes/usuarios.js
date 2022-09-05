@@ -3,8 +3,12 @@ const { check } = require('express-validator');
 const { usuarioGet, usuarioPost,  usuarioPut, usuarioDelete, usuarioPatch } = require('../controllers/usuarios');
 const { esRoleValido, emailExiste, existeUsuarioPorID } = require('../helpers/db-validators');
 const { validarErrores } = require('../middlewares/validar-campos');
-
 const router = Router();
+
+/**
+ * En este js se indican las rutas que hara referencia a los usuarios
+ * Los 'check()' son validaciones (middlewares) que se usan con 'express-validator'
+ */
 
 router.get('/', usuarioGet );
 

@@ -2,6 +2,11 @@ const { response, request } = require('express');
 const Usuario = require('../models/usuario');
 const bcrypt = require('bcryptjs');
 
+/**
+ * En esta clase se contruye los servicios web que tendran acceso a la BBDD
+ * toda la logica que haran esta aqui
+ */
+
 const usuarioGet = async(req = request, res = response) => {
 
     const {limite = 5, desde = 0} = req.query;

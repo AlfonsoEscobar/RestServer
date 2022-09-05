@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+/**
+ * aqui se crea la conexion a la BBDD 
+ */
 const conexion = async() => {
 
     try {

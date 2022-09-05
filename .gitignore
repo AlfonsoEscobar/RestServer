@@ -3,3 +3,4 @@
 node_modules/
 
 
+# .env Si se tuviera que subir a produccion este archivo no se tendria que subir y usar las variables del servidor
