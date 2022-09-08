@@ -1,4 +1,5 @@
-const { response, request } = require("express")
+const { response, request } = require("express");
+const role = require("../models/role");
 
 const validarRoles = (req = request, res = response, next) => {
 
@@ -19,7 +20,27 @@ const validarRoles = (req = request, res = response, next) => {
     next();
 }
 
+const tieneRol = (...roles) => {
+    return (req = request, res = response, next) => {
+
+        if(!req.usuario){
+            return res.status(500).json({
+                msg: 'Error, no se esta verificando el token antes.'
+            });
+        }
+
+        if(!roles.includes(req.usuario.rol)){
+            return res.status(401).json({
+                msg: `El servicio necesita uno de estos roles ${roles}`
+            });
+        }
+
+        next();
+    }
+}
+
 
 module.exports = {
-    validarRoles
+    validarRoles,
+    tieneRol
 }
