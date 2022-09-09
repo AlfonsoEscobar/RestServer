@@ -1,6 +1,10 @@
 const { response, request } = require("express");
 const role = require("../models/role");
 
+/**
+ * Aqui validamos que tengan los Roles necesarios para las acciones necesarias 
+ */
+
 const validarRoles = (req = request, res = response, next) => {
 
     if(!req.usuario){

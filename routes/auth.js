@@ -6,7 +6,7 @@ const { validarErrores } = require('../middlewares/validar-campos');
 const router = Router();
 
 /**
- * En este js se indican las rutas que hara referencia a los usuarios
+ * En este js se indican las rutas que hara referencia al login
  * Los 'check()' son validaciones (middlewares) que se usan con 'express-validator'
  */
 

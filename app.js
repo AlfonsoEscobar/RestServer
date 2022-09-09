@@ -1,4 +1,4 @@
-const Server = require('./models/Server');
+const Server = require('./models/server');
 // Con esta importacion podemos acceder facilmente a las variables de entorno que se configuran en el
 // archivo de .env
 require('dotenv').config();

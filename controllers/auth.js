@@ -3,6 +3,10 @@ const Usuario = require('../models/usuario');
 const bcrypt = require('bcryptjs');
 const { generarJWT } = require('../helpers/generar-jwt');
 
+/**
+ * En esta clase es donde esta toda la logica del login
+ */
+
 const login = async(req = request, res = response) => {
 
     try {

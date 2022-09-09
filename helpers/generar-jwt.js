@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 
+/**
+ * Aqui es donde se genera el token y se devuelve al usuario
+ */
 
 const generarJWT = (uid = '') =>{
 
