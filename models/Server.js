@@ -10,10 +10,13 @@ class Server{
     */
     constructor(){
 
-        this.app = express();
-        this.port = process.env.PORT;
-        this.usuariosPath = '/api/usuarios';
-        this.authPath = '/api/auth';
+        this.app    = express();
+        this.port   = process.env.PORT;
+
+        // Path para las conexiones
+        this.usuariosPath       = '/api/usuarios';
+        this.categoriasPath     = '/api/categorias';
+        this.authPath           = '/api/auth';
 
         // Se inicia la conexion a la BBDD
         this.conexionDB();
@@ -58,9 +61,10 @@ class Server{
         Se usa para poner las rutas que se van a necesitar para haceder a la API 
     */
     routes(){
-        // El primer argumento es el Strin que hara de conexion y el segundo donde se encuentran todas las rutas
+        // El primer argumento es el String que hara de conexion y el segundo donde se encuentran todas las rutas
         // para asi tenerlas separadas, aqui se pondria si se necesitaran mas rutas para diversos recursos
         this.app.use(this.authPath, require('../routes/auth'));
+        this.app.use(this.categoriasPath, require('../routes/categorias'));
         this.app.use(this.usuariosPath, require('../routes/usuarios'));
     }
 

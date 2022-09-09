@@ -1,4 +1,5 @@
 
+const Categoria = require('../models/categoria');
 const Role = require('../models/role');
 const Usuario = require('../models/usuario');
 
@@ -31,8 +32,17 @@ const existeUsuarioPorID = async ( id ) => {
     }
 }
 
+// Verificar si el id ya existe en la BBDD
+const existeCategoriaPorID = async ( id ) => {
+    const existeID = await Categoria.findById(id);
+    if( !existeID ){
+        throw new Error(`El id '${id}' no existe en la BBDD`);
+    }
+}
+
 module.exports = {
     esRoleValido,
     emailExiste,
-    existeUsuarioPorID
+    existeUsuarioPorID,
+    existeCategoriaPorID
 }
