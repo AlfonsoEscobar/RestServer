@@ -5,7 +5,7 @@ const role = require("../models/role");
  * Aqui validamos que tengan los Roles necesarios para las acciones necesarias 
  */
 
-const validarRoles = (req = request, res = response, next) => {
+const esAdminRol = (req = request, res = response, next) => {
 
     if(!req.usuario){
         return res.status(500).json({
@@ -45,6 +45,6 @@ const tieneRol = (...roles) => {
 
 
 module.exports = {
-    validarRoles,
+    esAdminRol,
     tieneRol
 }

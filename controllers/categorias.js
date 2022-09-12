@@ -68,12 +68,16 @@ const categoriaPut = async (req = request, res = response) => {
 
     const { id } = req.params;
 
-    
+    const { estado, usuario, ...data } = req.body;
 
-    const categoria = await Categoria.findByIdAndUpdate( id, resto );
+    data.nombre = data.nombre.toUpperCase();
+    data.usuario = req.usuario._id;
+
+    const categoria = await Categoria.findByIdAndUpdate( id, data, {new: true} );
 
     res.status(201).json({
-        'msg':'Categoria actualizada'
+        'msg':'Categoria actualizada',
+        categoria
     });
 }
 
@@ -86,7 +90,7 @@ const categoriaDelete = async (req = request, res = response) => {
 
     // En vez de eliminar por completo la categoria, lo unico que vamos hacer es
     // poner su estado a false para que este dado de baja.
-    const categoria = await Categoria.findByIdAndUpdate(id, {estado: false});
+    const categoria = await Categoria.findByIdAndUpdate(id, {estado: false}, {new: true});
 
     res.json({
         categoria

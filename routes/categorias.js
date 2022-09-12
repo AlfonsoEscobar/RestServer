@@ -5,7 +5,7 @@ const { crearCategoria, categoriaDelete, categoriaPut, categoriaGet, categoriaGe
 const { validarJWT } = require('../middlewares/validar-jwt');
 const { validarErrores } = require('../middlewares/validar-campos');
 const { existeCategoriaPorID } = require('../helpers/db-validators');
-const { validarRoles } = require('../middlewares/validar-rol');
+const { esAdminRol } = require('../middlewares/validar-rol');
 
 const router = Router();
 
@@ -41,7 +41,8 @@ router.put('/:id', [
 // Borrar una categoria - solo para admin
 router.delete('/:id', [
     validarJWT,
-    validarRoles,
+    esAdminRol,
+    check('id', 'No es un id valido.').isMongoId(),
     check('id').custom(existeCategoriaPorID),
     validarErrores
 ], categoriaDelete);
